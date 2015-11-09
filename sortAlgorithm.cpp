@@ -1,4 +1,4 @@
-#include "sortALgorithm.h"
+#include "sortAlgorithm.h"
 #include "Container.h"
 #include <vector>
 

@@ -54,7 +54,7 @@ void mergeSort::merge_sort(Container *c, int low, int high)
     return;
 }
 
-void merge(Container *c, int low, int high, int mid)
+void mergeSort::merge(Container *c, int low, int high, int mid)
 {
     int i = low;
     int j = mid + 1; 

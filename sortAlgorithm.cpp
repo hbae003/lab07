@@ -1,4 +1,4 @@
-#include "sortALgorithm.h"
+#include "sortAlgorithm.h"
 #include "Container.h"
 #include <vector>
 
@@ -11,7 +11,7 @@ void bubbleSort::sort(Container *c)
         {
             if (c->at(i) > c->at(i + 1))
             { 
-                c->swap(i. i + 1);
+                c->swap(i, i + 1);
                 done = false;
             }
         } 

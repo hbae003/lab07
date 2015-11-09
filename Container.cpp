@@ -40,7 +40,7 @@ void VectorContainer::insert(int element)
 //  Prints every element in the container
 void VectorContainer::print()
 {
-    for(int i = 0; i < vc.size(); ++i)
+    for(unsigned i = 0; i < vc.size(); ++i)
     {
         cout << vc.at(i) << endl;
     }
@@ -56,12 +56,12 @@ int VectorContainer::size()
 //  Sets a private member variable of SortAlgorithm* algorithm
 void VectorContainer::set_sort(SortAlgorithm* s)
 {
-    algorithm = this->s;
+    algorithm = s;
     return;
 }
 
 //  Calls SortAlgorithm algorithm's sort function
-void VecotrContainer::sort()
+void VectorContainer::sort()
 {
     algorithm->sort(this);
     return;
@@ -75,7 +75,7 @@ ListContainer::ListContainer(list <int> &l, SortAlgorithm* s)
     list <int> tempList(l);
     while(!tempList.empty())
     {
-        temp.push_back(tempList.front())
+        temp.push_back(tempList.front());
         tempList.pop_front();
     }
 }
@@ -91,7 +91,7 @@ void ListContainer::swap(int i, int j)
 {
     swap(temp.at(i), temp.at(j));
     list <int> tempList();
-    for(int k = 0; k < temp.size(); ++k)
+    for(unsigned k = 0; k < temp.size(); ++k)
     {
         tempList.push_back(temp.at(k));
     }
@@ -102,7 +102,7 @@ void ListContainer::swap(int i, int j)
 //  Prints every element in order
 void ListContainer::print()
 {
-    for(int i = 0; i < temp.size(); ++i)
+    for(unsigned i = 0; i < temp.size(); ++i)
     {
         cout << temp.at(i) << endl;
     }
@@ -118,7 +118,7 @@ int ListContainer::size()
 //  Sets the SortAlgorithm* algorithm 
 void ListContainer::set_sort(SortAlgorithm* s)
 {
-    algorithm = this->s;
+    algorithm = s;
     return;
 }
 

@@ -7,9 +7,11 @@
 
 #include "SortAlgorithm.h"
 
+using namespace std;
+
 class Container
 {
-    private:
+    protected:
         SortAlgorithm* algorithm;
     public:
         Container(SortAlgorithm* s);
@@ -22,7 +24,7 @@ class Container
         virtual void sort() = 0;
 };
 
-class VectorContainer
+class VectorContainer : public Container
 {
     private:
         vector <int> vc;
@@ -37,7 +39,7 @@ class VectorContainer
         void sort();
 };
 
-class ListContainer
+class ListContainer : public Container
 {
     private:
         list <int> lc;

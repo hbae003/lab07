@@ -1,5 +1,5 @@
-#include "Container.h"
 #include "SortAlgorithm.h"
+#include "Container.h"
 
 #include <iostream>
 #include <vector>

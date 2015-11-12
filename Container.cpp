@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <algorithm>
+#include <vector>
+#include <list>
 
 using namespace std;
 
@@ -71,40 +73,44 @@ void VectorContainer::sort()
 //  ListContainer class constructor
 ListContainer::ListContainer(list <int> &l, SortAlgorithm* s)
     : Container(s), lc(l)
-{
-    list <int> tempList(l);
-    while(!tempList.empty())
-    {
-        temp.push_back(tempList.front());
-        tempList.pop_front();
-    }
-}
+{}
 
 //  Returns element at index i
 int ListContainer::at(int i)
 {
-    return temp.at(i);
+    list <int>::iterator it = lc.begin();
+    for(int n = 0; n < i; n++)
+    {
+        it++;
+    }
+    return *it;
 }
 
 //  Swaps the elements at index i and index j
 void ListContainer::swap(int i, int j)
 {
-    swap(temp.at(i), temp.at(j));
-    list <int> tempList();
-    for(unsigned k = 0; k < temp.size(); ++k)
+    list <int>::iterator itA = lc.begin();
+    list <int>::iterator itB = lc.begin();
+    for(int n = 0; n < i; n++)
     {
-        tempList.push_back(temp.at(k));
+        itA++;
     }
-    lc.swap(tempList);
+    for(int n = 0; n < j; n++)
+    {
+        itB++;
+    }
+    list <int>::iterator temp = itA;
+    *itA = *itB;
+    *itB = *temp;
     return;
 }
 
 //  Prints every element in order
 void ListContainer::print()
 {
-    for(unsigned i = 0; i < temp.size(); ++i)
+    for(list <int>::iterator it = lc.begin(); it != lc.end(); ++it)
     {
-        cout << temp.at(i) << endl;
+        cout << *it << endl;
     }
     return;
 }

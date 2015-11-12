@@ -43,7 +43,6 @@ class ListContainer : public Container
 {
     private:
         list <int> lc;
-        vector <int> temp;
     public:
         ListContainer(list <int> &l, SortAlgorithm* s);
         int at(int i);

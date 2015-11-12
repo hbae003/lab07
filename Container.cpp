@@ -9,14 +9,16 @@
 using namespace std;
 
 //  Container abstract base class
+Container::Container()
+{}
 Container::Container(SortAlgorithm* s)
     : algorithm(s)
 {}
 
 //  VectorContainer derived class
 //  VectorContainer class constructor
-VectorContainer::VectorContainer(vector <int> &v, SortAlgorithm* s)
-    : Container(s), vc(v)
+VectorContainer::VectorContainer(vector <int> &v)
+    : Container(), vc(v)
 {} 
 
 //  Returns the element at index i
@@ -28,7 +30,14 @@ int VectorContainer::at(int i)
 //  Swaps the elements at index i and index j
 void VectorContainer::swap(int i, int j)
 {
-    swap(vc.at(i), vc.at(j));
+    if((i > this->size()) || (j > this->size()))
+    {
+        cout << "Error: out of range" << endl;
+        return;
+    }
+    int temp = vc.at(i);
+    vc.at(i) = vc.at(j);
+    vc.at(j) = temp;
     return;
 }
 
@@ -42,10 +51,16 @@ void VectorContainer::insert(int element)
 //  Prints every element in the container
 void VectorContainer::print()
 {
+    cout << "Vector Container:\t";
     for(unsigned i = 0; i < vc.size(); ++i)
     {
-        cout << vc.at(i) << endl;
+        cout << vc.at(i);
+        if(i < (vc.size() - 1))
+        {
+            cout << " ";
+        }
     }
+    cout << endl;
     return;
 }
 
@@ -71,8 +86,8 @@ void VectorContainer::sort()
 
 //  ListContainer derived class
 //  ListContainer class constructor
-ListContainer::ListContainer(list <int> &l, SortAlgorithm* s)
-    : Container(s), lc(l)
+ListContainer::ListContainer(list <int> &l)
+    : Container(), lc(l)
 {}
 
 //  Returns element at index i
@@ -91,6 +106,11 @@ void ListContainer::swap(int i, int j)
 {
     list <int>::iterator itA = lc.begin();
     list <int>::iterator itB = lc.begin();
+    if((i > this->size()) || (j > this->size()))
+    {
+        cout << "Error: index exceeds bounds" << endl;
+        return;
+    }
     for(int n = 0; n < i; n++)
     {
         itA++;
@@ -99,19 +119,35 @@ void ListContainer::swap(int i, int j)
     {
         itB++;
     }
-    list <int>::iterator temp = itA;
+    //list <int>::iterator temp = itA;
+    int temp = *itA;
     *itA = *itB;
-    *itB = *temp;
+    *itB = temp;
+    return;
+}
+
+//  Inserts int i at the end of the container
+void ListContainer::insert(int i)
+{
+    lc.push_back(i);
     return;
 }
 
 //  Prints every element in order
 void ListContainer::print()
 {
+    cout << "List Container:\t\t";
     for(list <int>::iterator it = lc.begin(); it != lc.end(); ++it)
     {
-        cout << *it << endl;
-    }
+        cout << *it;
+        list <int>::iterator next = it;
+        next++;
+        if(next != lc.end())
+        {
+            cout << " ";
+        }
+    }  
+    cout << endl;
     return;
 }
 

@@ -14,6 +14,7 @@ class Container
     protected:
         SortAlgorithm* algorithm;
     public:
+        Container();
         Container(SortAlgorithm* s);
         virtual int at(int i) = 0;
         virtual void swap(int i, int j) = 0;
@@ -29,7 +30,7 @@ class VectorContainer : public Container
     private:
         vector <int> vc;
     public:
-        VectorContainer(vector <int> &v, SortAlgorithm* s);
+        VectorContainer(vector <int> &v);
         int at(int i);
         void swap(int i, int j);
         void insert(int element);
@@ -44,7 +45,7 @@ class ListContainer : public Container
     private:
         list <int> lc;
     public:
-        ListContainer(list <int> &l, SortAlgorithm* s);
+        ListContainer(list <int> &l);
         int at(int i);
         void swap(int i, int j);
         void insert(int element);

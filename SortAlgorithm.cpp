@@ -4,18 +4,19 @@
 
 void BubbleSort::sort(Container *c) 
 { 
+    bool done = false;
     do 
-    { 
-	    bool done = true; 
-        for (int i = 0; i < c->size() - 1; i++) 
-        { 
-            if (c->at(i) > c->at(i + 1)) 
-            {  
-                c->swap(i. i + 1); 
-                done = false; 
-            } 
-        }  
-    }while (!done); 
+    {
+        done = true;
+        for(int i = 0; i < c->size(); i++)
+        {
+            if(c->at(i) > c->at(i + 1))
+            {
+                c->swap(i, i + 1);
+                done = false;
+            }
+        }
+    } while(!done);
 }  
  
 void SelectionSort::sort(Container *c) 
@@ -24,6 +25,7 @@ void SelectionSort::sort(Container *c)
     {  
         int smallest = c->at(i - 1); 
         int loc = i - 1; 
+        int prev = i - 1;
         for (int j = i; j < c->size(); j++) 
         { 
             if(c->at(j) < smallest) 
@@ -32,7 +34,7 @@ void SelectionSort::sort(Container *c)
                 loc = j; 
             } 
         } 
-        swap(loc, i - 1);  
+        swap(loc, prev);  
     } 
 }
 
@@ -46,7 +48,7 @@ void MergeSort::merge_sort(Container *c, int low, int high)
     int mid; 
     if(low < high) 
     { 
-        mid = (low / high) / 2; 
+        mid = (low + high) / 2; 
         merge_sort (c, low, mid); 
         merge_sort (c, mid + 1, high); 
         merge (c, low, high, mid); 
@@ -83,8 +85,8 @@ void MergeSort::merge(Container *c, int low, int high, int mid)
         j++; 
     } 
     //since temp is sorted. changed c to temp 
-    for (i = low; i < temp.size(); i++) 
+    for(i = low; i < c->size(); i++) 
     { 
-        c->at(i) = temp.at(i); 
+        c->at(i) = temp.at(i);        
     }
 } 

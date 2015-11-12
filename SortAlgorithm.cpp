@@ -6,12 +6,12 @@ void BubbleSort::sort(Container *c)
 { 
     do 
     { 
-	    bool done = true; 
+	bool done = true; 
         for (int i = 0; i < c->size() - 1; i++) 
         { 
             if (c->at(i) > c->at(i + 1)) 
             {  
-                c->swap(i. i + 1); 
+                c->swap(i, i + 1); 
                 done = false; 
             } 
         }  

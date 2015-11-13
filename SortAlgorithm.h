@@ -12,17 +12,18 @@ class SortAlgorithm
         virtual void sort(Container* c) = 0;
 };
 
+class SelectionSort: public SortAlgorithm 
+{
+    public:
+        void sort(Container* c);
+};
+
 class BubbleSort: public SortAlgorithm
 {
     public:
         void sort(Container* c);
 };
 
-class SelectionSort: public SortAlgorithm 
-{
-    public:
-        void sort(Container* c);
-};
 
 class MergeSort: public SortAlgorithm
 {

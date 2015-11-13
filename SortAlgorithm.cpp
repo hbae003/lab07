@@ -87,6 +87,6 @@ void MergeSort::merge(Container *c, int low, int high, int mid)
     //since temp is sorted. changed c to temp 
     for(i = low; i < c->size(); i++) 
     { 
-        c->at(i) = temp.at(i);        
+        c->insert(temp.at(i));
     }
 } 

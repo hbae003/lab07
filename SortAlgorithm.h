@@ -1,21 +1,27 @@
 #ifndef SORTALGORITHM_H
 #define SORTALGORITHM_H
 
-#include "Container.h"
+#include <iostream>
+#include <vector>
+#include <list>
 
-class sortAlgorithm
+using namespace std;
+
+class Container;
+
+class SortAlgorithm
 {
  public: 
     virtual void sort(Container* c) = 0;
 };
 
-class bubbleSort: public sortAlgorithm
+class BubbleSort: public sortAlgorithm
 {
  public:
     void sort(Container* c);
 };
 
-class selectionSort: public sortAlgorithm 
+class SelectionSort: public sortAlgorithm 
 {
  public:
     void sort(Container* c);

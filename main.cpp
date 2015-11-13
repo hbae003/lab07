@@ -53,8 +53,10 @@ int main()
     vc.print();
     cout << "The size of LC is " << lc.size() << endl;
     lc.print();
+    cout << endl;
 
     //  Sorts
+    cout << "SelectionSort" << endl;
     //  SelectionSort
     VectorContainer vcS(v);
     ListContainer lcS(l);
@@ -69,5 +71,39 @@ int main()
     vcS.print();
     lcS.sort();
     lcS.print();
+    cout << endl;
+    
+    cout << "BubbleSort" << endl;
+    //  BubbleSort
+    VectorContainer vcB(v);
+    ListContainer lcB(l);
+    vcB.set_sort(b);
+    lcB.set_sort(b);
+
+    //  Pre-sort
+    vcB.print();
+    lcB.print();
+    //  Sorted
+    vcB.sort();
+    lcB.sort();
+    vcB.print();
+    lcB.print();
+    cout << endl;
+    
+    cout << "MergeSort" << endl;
+    //  MergeSort
+    VectorContainer vcM(v);
+    ListContainer lcM(l);
+    vcM.set_sort(m);
+    lcM.set_sort(m);
+
+    //  Pre-sort
+    vcM.print();
+    lcM.print();
+    //  Sorted
+    vcM.sort();
+    lcM.sort();
+    vcM.print();
+    lcM.print();
     return 0;
 }

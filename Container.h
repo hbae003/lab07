@@ -5,9 +5,9 @@
 #include <vector>
 #include <list>
 
-#include "SortAlgorithm.h"
-
 using namespace std;
+
+class SortAlgorithm;
 
 class Container
 {

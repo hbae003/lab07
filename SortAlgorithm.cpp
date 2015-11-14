@@ -1,6 +1,23 @@
 #include "SortAlgorithm.h" 
 #include "Container.h" 
 #include <vector> 
+void SelectionSort::sort(Container *c) 
+{ 
+    int i, j;
+    int smallest = 0;
+    for (i = 0; i < c->size(); i++) 
+    {
+        smallest = i;
+        for (j = i; j < c->size(); j++) 
+        { 
+            if(c->at(j) < c->at(smallest)) 
+            {  
+                smallest = j; 
+            } 
+        } 
+        c->swap(smallest, i);  
+    } 
+}
 
 void BubbleSort::sort(Container *c) 
 { 
@@ -8,7 +25,7 @@ void BubbleSort::sort(Container *c)
     do 
     {
         done = true;
-        for(int i = 0; i < c->size(); i++)
+        for(int i = 0; i < (c->size() - 1); i++)
         {
             if(c->at(i) > c->at(i + 1))
             {
@@ -19,25 +36,6 @@ void BubbleSort::sort(Container *c)
     } while(!done);
 }  
  
-void SelectionSort::sort(Container *c) 
-{ 
-    for (int i = 1; i < c->size(); i++) 
-    {  
-        int smallest = c->at(i - 1); 
-        int loc = i - 1; 
-        int prev = i - 1;
-        for (int j = i; j < c->size(); j++) 
-        { 
-            if(c->at(j) < smallest) 
-            {  
-                smallest = c->at(j); 
-                loc = j; 
-            } 
-        } 
-        swap(loc, prev);  
-    } 
-}
-
 void MergeSort::sort(Container *c) 
 { 
     merge_sort(c, 0, c->size());    
@@ -87,6 +85,6 @@ void MergeSort::merge(Container *c, int low, int high, int mid)
     //since temp is sorted. changed c to temp 
     for(i = low; i < c->size(); i++) 
     { 
-        c->at(i) = temp.at(i);        
+        c->insert(temp.at(i));
     }
 } 

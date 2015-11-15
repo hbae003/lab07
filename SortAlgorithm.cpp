@@ -38,8 +38,14 @@ void BubbleSort::sort(Container *c)
 }  
  
 void MergeSort::sort(Container *c) 
-{ 
-    merge_sort(c, 0, c->size());    
+{
+    int low = 0;
+    int high  = c->size() - 1;
+    int mid = (low + high) / 2; 
+    merge_sort(c, low, mid); 
+    merge_sort(c, mid+1, high);
+    merge(c, low, high, mid);
+    return;   
 }  
  
 void MergeSort::merge_sort(Container *c, int low, int high) 
@@ -47,9 +53,13 @@ void MergeSort::merge_sort(Container *c, int low, int high)
     int mid; 
     if(low < high) 
     { 
-        mid = (low + high) / 2; 
+        mid = (low + high) / 2;
+        cout << "Mid: " << mid << endl;
+        cout << "Low: " << low << "; Mid: " << mid << endl;
         merge_sort (c, low, mid); 
+        cout << "Mid+1: " << mid+1 << "; High: " << high << endl;
         merge_sort (c, mid + 1, high); 
+        cout << "Low: " << low << "; Mid: " << mid << "; High: " << high << endl;
         merge (c, low, high, mid); 
     } 
     return; 
@@ -59,33 +69,39 @@ void MergeSort::merge(Container *c, int low, int high, int mid)
 { 
     int i = low; 
     int j = mid + 1;   
+    cout << "Low: " << low << "; Mid: " << mid << "; High: " << high << endl;
     vector<int> temp; 
     while (i <= mid && j <= high) 
     { 
+        cout << "i: " << i << "; j: " << j << endl;
         if (c->at(i) < c->at(j)) 
         { 
-            temp.push_back(c->at(i)); 
+            temp.push_back(i); 
             i++; 
         } 
         else 
         { 
-            temp.push_back(c->at(j)); 
+            temp.push_back(j); 
             j++; 
         } 
     } 
     while (i <= mid) 
     { 
-        temp.push_back(c->at(i)); 
+        temp.push_back(i); 
         i++; 
     } 
     while (j <= high) 
     { 
-        temp.push_back(c->at(j)); 
+        temp.push_back(j); 
         j++; 
-    } 
+    }
+    cout << "Check - Vector size: " << temp.size() << endl; 
     //since temp is sorted. changed c to temp 
-    for(i = low; i < c->size(); i++) 
+    for(unsigned u = low; u < temp.size(); u++) 
     { 
-        c->insert(temp.at(i));
+        if(c->at(temp.at(u)) < c->at(u))
+        {
+            c->swap(temp.at(u), u);
+        }        
     }
 } 

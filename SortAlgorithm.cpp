@@ -44,6 +44,8 @@ void MergeSort::sort(Container *c)
     int mid = (low + high) / 2; 
     merge_sort(c, low, mid); 
     merge_sort(c, mid+1, high);
+    cout << "Test Container: 3 5 2 1 4" << endl
+        << "Correct Temp: 3 2 0 4 1" << endl; 
     merge(c, low, high, mid);
     return;   
 }  
@@ -54,12 +56,8 @@ void MergeSort::merge_sort(Container *c, int low, int high)
     if(low < high) 
     { 
         mid = (low + high) / 2;
-        cout << "Mid: " << mid << endl;
-        cout << "Low: " << low << "; Mid: " << mid << endl;
         merge_sort (c, low, mid); 
-        cout << "Mid+1: " << mid+1 << "; High: " << high << endl;
         merge_sort (c, mid + 1, high); 
-        cout << "Low: " << low << "; Mid: " << mid << "; High: " << high << endl;
         merge (c, low, high, mid); 
     } 
     return; 
@@ -69,11 +67,9 @@ void MergeSort::merge(Container *c, int low, int high, int mid)
 { 
     int i = low; 
     int j = mid + 1;   
-    cout << "Low: " << low << "; Mid: " << mid << "; High: " << high << endl;
     vector<int> temp; 
     while (i <= mid && j <= high) 
     { 
-        cout << "i: " << i << "; j: " << j << endl;
         if (c->at(i) < c->at(j)) 
         { 
             temp.push_back(i); 
@@ -95,13 +91,34 @@ void MergeSort::merge(Container *c, int low, int high, int mid)
         temp.push_back(j); 
         j++; 
     }
-    cout << "Check - Vector size: " << temp.size() << endl; 
+    //  Test Case
+    cout << "Temp Values: ";
+    for(unsigned k = 0; k < temp.size(); k++)
+    {
+        cout << temp.at(k) << " ";
+    }
+    cout << endl;
+    
     //since temp is sorted. changed c to temp 
     for(unsigned u = low; u < temp.size(); u++) 
     { 
         if(c->at(temp.at(u)) < c->at(u))
         {
+            cout << "Check " << u << " - " << temp.at(u)
+                << ": c->at(u): " << c->at(u) << "; c->at(temp.at(u)): " 
+                << c->at(temp.at(u)) << endl;
             c->swap(temp.at(u), u);
+            /*
+            //  Show current vector
+            cout << "Temp Values: ";
+            for(unsigned k = 0; k < temp.size(); ++k)
+            {
+                cout << temp.at(k) << " ";
+            }
+            cout << endl;
+            */
+            cout << "Swapped! Result is: " << endl;
+            c->print();
         }        
     }
 } 

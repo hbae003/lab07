@@ -46,7 +46,7 @@ void MergeSort::merge_sort(Container *c, int low, int high)
     int mid; 
     if(low < high) 
     { 
-        mid = (low + high) / 2; 
+        mid = (low + high) / 2;
         merge_sort (c, low, mid); 
         merge_sort (c, mid + 1, high); 
         merge (c, low, high, mid); 
@@ -63,28 +63,32 @@ void MergeSort::merge(Container *c, int low, int high, int mid)
     { 
         if (c->at(i) < c->at(j)) 
         { 
-            temp.push_back(c->at(i)); 
+            temp.push_back(i); 
             i++; 
         } 
         else 
         { 
-            temp.push_back(c->at(j)); 
+            temp.push_back(j); 
             j++; 
         } 
     } 
     while (i <= mid) 
     { 
-        temp.push_back(c->at(i)); 
+        temp.push_back(i); 
         i++; 
     } 
     while (j <= high) 
     { 
-        temp.push_back(c->at(j)); 
+        temp.push_back(j); 
         j++; 
-    } 
+    }
+    cout << "Check - Vector size: " << temp.size() << endl; 
     //since temp is sorted. changed c to temp 
     for(i = low; i < c->size(); i++) 
     { 
-        c->insert(temp.at(i));
+        if(c->at(temp.at(i)) < c->at(i))
+        {
+            c->swap(temp.at(i), i);
+        }        
     }
 } 

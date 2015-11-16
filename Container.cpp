@@ -84,6 +84,12 @@ void VectorContainer::sort()
     return;
 }
 
+//clears vector
+void VectorContainer::erase()
+{
+    vc.clear();
+}
+
 //  ListContainer derived class
 //  ListContainer class constructor
 ListContainer::ListContainer(list <int> &l)
@@ -169,4 +175,10 @@ void ListContainer::sort()
 {
     algorithm->sort(this);
     return;
+}
+
+//clears list 
+void ListContainer::erase()
+{
+    lc.clear();
 }

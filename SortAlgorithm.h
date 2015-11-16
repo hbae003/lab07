@@ -34,8 +34,8 @@ class MergeSort: public SortAlgorithm
 {
  public:
     void sort(Container* c);
-    void merge(Container *c, int low, int mid, int high);
-    void merge_sort(Container *c, int low, int high);
+    void merge(vector<int> &c, int low, int mid, int high);
+    void merge_sort(vector<int> &c, int low, int high);
 };
 
 #endif

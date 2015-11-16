@@ -25,6 +25,10 @@ int main()
     v.push_back(2);
     v.push_back(1);
     v.push_back(4);
+    v.push_back(15);
+    v.push_back(9);
+    v.push_back(13);
+    v.push_back(11);
 
     //  Declare a list
     list <int> l;
@@ -33,6 +37,10 @@ int main()
     l.push_back(2);
     l.push_back(1);
     l.push_back(4);
+    l.push_back(15);
+    l.push_back(9);
+    l.push_back(13);
+    l.push_back(11);
 
     //  Containers
     VectorContainer vc(v);
@@ -101,6 +109,34 @@ int main()
     vcM.print();
     lcM.print();
     //  Sorted
+    vcM.sort();
+    lcM.sort();
+    vcM.print();
+    lcM.print();
+    
+    vcM.erase();
+    lcM.erase();
+
+    vcM.insert(69);
+    vcM.insert(43);
+    vcM.insert(33);
+    vcM.insert(21);
+    vcM.insert(48);
+    vcM.insert(39);
+    vcM.insert(59);
+   
+    lcM.insert(69);
+    lcM.insert(43);
+    lcM.insert(33);
+    lcM.insert(21);
+    lcM.insert(48);
+    lcM.insert(39);
+    lcM.insert(59);
+ 
+    //presort
+    vcM.print();
+    lcM.print();
+    //sorted
     vcM.sort();
     lcM.sort();
     vcM.print();

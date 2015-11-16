@@ -23,6 +23,7 @@ class Container
         virtual int size() = 0;
         virtual void set_sort(SortAlgorithm* s) = 0;
         virtual void sort() = 0;
+        virtual void erase() = 0;
 };
 
 class VectorContainer : public Container
@@ -38,6 +39,7 @@ class VectorContainer : public Container
         int size();
         void set_sort(SortAlgorithm* s);
         void sort();
+        void erase();
 };
 
 class ListContainer : public Container
@@ -53,6 +55,7 @@ class ListContainer : public Container
         int size();
         void set_sort(SortAlgorithm* s);
         void sort();
+        void erase();
 };
 
 

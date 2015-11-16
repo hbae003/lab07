@@ -39,86 +39,67 @@ void BubbleSort::sort(Container *c)
  
 void MergeSort::sort(Container *c) 
 {
-    int low = 0;
-    int high  = c->size() - 1;
-    int mid = (low + high) / 2; 
-    merge_sort(c, low, mid); 
-    merge_sort(c, mid+1, high);
-    cout << "Test Container: 3 5 2 1 4" << endl
-        << "Correct Temp: 3 2 0 4 1" << endl; 
-    merge(c, low, high, mid);
-    return;   
+    vector<int> temp;
+    for (int i = 0; i < c->size(); i++)
+    {
+        temp.push_back(c->at(i));
+    }
+    c->erase();
+    merge_sort(temp, 0, (temp.size() - 1));    
+     
+    for (unsigned i = 0; i < temp.size(); i++)
+    {
+       c->insert(temp.at(i));
+    }
 }  
  
-void MergeSort::merge_sort(Container *c, int low, int high) 
+void MergeSort::merge_sort(vector<int> &c, int low, int high) 
 { 
     int mid; 
     if(low < high) 
     { 
-        mid = (low + high) / 2;
+        mid = (low + high) / 2; 
         merge_sort (c, low, mid); 
         merge_sort (c, mid + 1, high); 
-        merge (c, low, high, mid); 
-    } 
+        merge (c, low, mid, high); 
+    }
     return; 
 } 
  
-void MergeSort::merge(Container *c, int low, int high, int mid) 
+void MergeSort::merge(vector<int> &c, int low, int mid, int high) 
 { 
     int i = low; 
     int j = mid + 1;   
     vector<int> temp; 
     while (i <= mid && j <= high) 
     { 
-        if (c->at(i) < c->at(j)) 
+        if (c.at(i) <= c.at(j)) 
         { 
-            temp.push_back(i); 
+            temp.push_back(c.at(i)); 
             i++; 
         } 
         else 
         { 
-            temp.push_back(j); 
+            temp.push_back(c.at(j)); 
             j++; 
         } 
     } 
     while (i <= mid) 
     { 
-        temp.push_back(i); 
+        temp.push_back(c.at(i)); 
         i++; 
     } 
     while (j <= high) 
     { 
-        temp.push_back(j); 
+        temp.push_back(c.at(j)); 
         j++; 
-    }
-    //  Test Case
-    cout << "Temp Values: ";
-    for(unsigned k = 0; k < temp.size(); k++)
-    {
-        cout << temp.at(k) << " ";
-    }
-    cout << endl;
-    
+    } 
+
+    j = 0;
     //since temp is sorted. changed c to temp 
-    for(unsigned u = low; u < temp.size(); u++) 
+    for(i = low; i <= high; i++) 
     { 
-        if(c->at(temp.at(u)) < c->at(u))
-        {
-            cout << "Check " << u << " - " << temp.at(u)
-                << ": c->at(u): " << c->at(u) << "; c->at(temp.at(u)): " 
-                << c->at(temp.at(u)) << endl;
-            c->swap(temp.at(u), u);
-            /*
-            //  Show current vector
-            cout << "Temp Values: ";
-            for(unsigned k = 0; k < temp.size(); ++k)
-            {
-                cout << temp.at(k) << " ";
-            }
-            cout << endl;
-            */
-            cout << "Swapped! Result is: " << endl;
-            c->print();
-        }        
+        c.at(i) = temp.at(j); 
+        j++;
     }
 } 
